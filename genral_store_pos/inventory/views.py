@@ -103,6 +103,33 @@ def addProduct(request):
             )
         )
 
-       
-
+# ======= view all the products ==========4
+def viewInventory(request):
+    if request.method == "GET":
+        try:
+            products=AddProduct.objects.all()
+            productData=[]
+            for product in products:
+                serialize= ProductSerializer(product).data
+                productData.append(serialize)
+            return JsonResponse(
+                good_response(
+                    request.method,{
+                        "data" : productData
+                    }
+                )
+            )
+        except Exception as e:
+            return JsonResponse(bad_response(
+                request.method,
+                f"internal error : {e}"
+            ))
+    else:
+        return JsonResponse(
+            bad_response(
+                request.method,
+                f"{request.method} not allowed",
+                status=405
+            )
+        )
 

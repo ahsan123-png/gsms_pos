@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 # import os
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 # STATIC_ROOT=BASE_DIR/'genral_store_pos'/'staticfiles'
 
 # MEDIA_URL = '/media/'
