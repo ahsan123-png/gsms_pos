@@ -57,18 +57,18 @@ TEMPLATES = [
         },
     },
 ]
-import os
-STATIC_URL = '/static/'
-STATIC_ROOT=BASE_DIR/'genral_store_pos'/'staticfiles'
+# import os
+# STATIC_URL = '/static/'
+# STATIC_ROOT=BASE_DIR/'genral_store_pos'/'staticfiles'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-STATICFILES_DIRS=[
+# STATICFILES_DIRS=[
 
-    BASE_DIR/'genral_store_pos'/'static'
-]
+#     BASE_DIR/'genral_store_pos'/'static'
+# ]
 
 WSGI_APPLICATION = 'genral_store_pos.wsgi.application'
 
