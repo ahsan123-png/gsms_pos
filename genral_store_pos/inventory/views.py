@@ -103,7 +103,7 @@ def addProduct(request):
             )
         )
 
-# ======= view all the products ==========4
+# ======= view all the products ==========
 def viewInventory(request):
     if request.method == "GET":
         try:
