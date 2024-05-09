@@ -51,8 +51,9 @@ def addInvoice(request):
                 )
             total_per_product = product.salePricePerPiece * qty
             total_amount += total_per_product
+            employee_name=employee.name
             product_entry = {
-                'product_name': product.productName,
+                'product_name': product.description,
                 'unit Price': product.salePricePerPiece,
                 'quantity': qty,
                 'total_per_product': total_per_product,
@@ -70,6 +71,7 @@ def addInvoice(request):
                 employee_name=employee.name,
             )
         response_data = {
+            "Employee Name" : employee_name,
             'invoice_number': invoice_number,
             'total_amount': total_amount,
             'products': products_list
