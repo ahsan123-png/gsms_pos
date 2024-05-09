@@ -3,12 +3,15 @@ from inventory.models import AddProduct  # Assuming AddProduct is the model for 
 
 class Invoice(models.Model):
     date = models.DateField(auto_now_add=True)
-    invoice_number = models.CharField(max_length=50, unique=True)
+    invoice_number = models.CharField(max_length=50)
     product = models.ForeignKey(AddProduct, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     net_total = models.DecimalField(max_digits=10, decimal_places=2)
     product_name = models.CharField(max_length=50)
+    employee_name = models.CharField(max_length=50,default='unknown')
+    unit = models.CharField(max_length=50,default='unknown')
+    
 
     def __str__(self):
         return f"Invoice {self.invoice_number}"
