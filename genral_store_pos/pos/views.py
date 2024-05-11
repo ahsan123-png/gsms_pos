@@ -93,6 +93,53 @@ def addInvoice(request):
                 status=405
             )
         )
+# ========= search and get the invoice ==========
+@csrf_exempt
+def getInvoice(request):
+    if request.method == "POST":
+        data=get_request_body(request)
+        try:
+            invoiceID=data.get('invoice_no','')
+            if invoiceID is None:
+                return JsonResponse(
+                    bad_response(
+                        request.method,
+                        f'Not found invoice : {invoiceID}'
+                    )
+                )
+            invoiceData = Invoice.objects.filter(invoice_number=invoiceID)
+
+            if invoiceData is None:
+                return JsonResponse(
+                    bad_response(
+                        request.method,
+                        f"No record found against invoice id {invoiceID}",status=404
+
+                    )
+                )
+            else:
+                serializeData=InvoiceSerializer(invoiceData,many=True).data
+                return JsonResponse(
+                    good_response(
+                        request.method,{
+                            "invoice":serializeData
+                        },status=200
+                    )
+                )
+        except Exception as e:
+            return JsonResponse(bad_response(
+                request.method,
+                f'Internal server error : {e}',status=500
+            ))
+            
+    else:
+        return JsonResponse(
+            bad_response(
+                request.method,
+                f"{request.method} not allowed",
+                status=405
+            )
+        )
 def generate_unique_invoice_number():
     # Generate a random invoice number and check if it exists in the database
     while True:

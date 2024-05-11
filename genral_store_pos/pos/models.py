@@ -3,7 +3,7 @@ from inventory.models import AddProduct  # Assuming AddProduct is the model for 
 
 class Invoice(models.Model):
     date = models.DateField(auto_now_add=True)
-    invoice_number = models.CharField(max_length=50)
+    invoice_number = models.IntegerField()
     product = models.ForeignKey(AddProduct, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
