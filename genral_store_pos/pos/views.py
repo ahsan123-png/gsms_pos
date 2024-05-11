@@ -131,7 +131,6 @@ def getInvoice(request):
                 request.method,
                 f'Internal server error : {e}',status=500
             ))
-            
     else:
         return JsonResponse(
             bad_response(
