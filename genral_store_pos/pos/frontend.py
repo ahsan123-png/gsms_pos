@@ -23,7 +23,6 @@ def addEmployees():
         "phoneNumber":phoneNumber.get() ,
         "email":email.get() 
         }
-    print(data)
     try:
         response=requests.post(url,json=data)
         result=response.json()
